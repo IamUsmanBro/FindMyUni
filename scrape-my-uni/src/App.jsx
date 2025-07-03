@@ -20,27 +20,27 @@ import ConnectionStatus from './components/ConnectionStatus';
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy-loaded pages
-const Home = lazy(() => import('./pages/Home'));
-const Login = lazy(() => import('./pages/Login'));
-const SignUp = lazy(() => import('./pages/SignUp'));
-const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
-const Dashboard = lazy(() => import('./pages/Dashboard'));
-const UniversityList = lazy(() => import('./pages/UniversityList'));
-const UniversityDetail = lazy(() => import('./pages/UniversityDetail'));
-const ApplicationForm = lazy(() => import('./pages/ApplicationForm'));
-const Profile = lazy(() => import('./pages/Profile'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const About = lazy(() => import('./pages/About'));
-const Features = lazy(() => import('./pages/Features'));
-const Contact = lazy(() => import('./pages/Contact'));
-const AdminLogin = lazy(() => import('./pages/AdminLogin'));
-const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
-const ScrapeManagement = lazy(() => import('./pages/ScrapeManagement'));
-const UniversityCompare = lazy(() => import('./components/UniversityCompare'));
-const UIExamples = lazy(() => import('./pages/UIExamples'));
+const Home = lazy(() => import('./pages/Home.jsx'));
+const Login = lazy(() => import('./pages/Login.jsx'));
+const SignUp = lazy(() => import('./pages/SignUp.jsx'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword.jsx'));
+const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
+const UniversityList = lazy(() => import('./pages/UniversityList.jsx'));
+const UniversityDetail = lazy(() => import('./pages/UniversityDetail.jsx'));
+const ApplicationForm = lazy(() => import('./pages/ApplicationForm.jsx'));
+const Profile = lazy(() => import('./pages/Profile.jsx'));
+const NotFound = lazy(() => import('./pages/NotFound.jsx'));
+const About = lazy(() => import('./pages/About.jsx'));
+const Features = lazy(() => import('./pages/Features.jsx'));
+const Contact = lazy(() => import('./pages/Contact.jsx'));
+const AdminLogin = lazy(() => import('./pages/AdminLogin.jsx'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard.jsx'));
+const ScrapeManagement = lazy(() => import('./pages/ScrapeManagement.jsx'));
+const UniversityCompare = lazy(() => import('./components/UniversityCompare.jsx'));
+const UIExamples = lazy(() => import('./pages/UIExamples.jsx'));
 
 // Lazy-load non-critical components
-const Chatbot = lazy(() => import('./components/Chatbot'));
+const Chatbot = lazy(() => import('./components/Chatbot.jsx'));
 
 const AdminRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();

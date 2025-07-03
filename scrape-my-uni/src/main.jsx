@@ -8,6 +8,8 @@ import './index.css';
 import './styles/animations.css';
 import { initScrollAnimations } from './utils/scrollAnimationObserver';
 import ScrollToTop from './components/UI/ScrollToTop';
+// Import Firebase to ensure it's initialized
+import './firebase.js';
 
 // Loading indicator
 const LoadingFallback = () => (
@@ -19,16 +21,13 @@ const LoadingFallback = () => (
 );
 
 // Lazy load the App component to speed up initial rendering
-const App = lazy(() => import('./App'));
-
-// Ensure Firebase is initialized, but don't block rendering
-import('./firebase.js');
+const App = lazy(() => import('./App.jsx'));
 
 // Load the console helpers in development mode
 if (import.meta.env.DEV) {
   // Defer loading console helpers
   setTimeout(() => {
-    import('./utils/consoleHelpers').then(() => {
+    import('./utils/consoleHelpers.js').then(() => {
       console.log('Development console helpers loaded');
     });
   }, 2000);
