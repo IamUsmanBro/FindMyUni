@@ -22,8 +22,5 @@
       "src": "/(.*)",
       "dest": "scrape-my-uni/dist/$1"
     }
-  ],
-  "outputDirectory": "scrape-my-uni/dist",
-  "buildCommand": "cd scrape-my-uni && npm run build",
-  "installCommand": "cd scrape-my-uni && npm install"
+  ]
 }
