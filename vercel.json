@@ -2,13 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "scrape-my-uni/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
       "src": "backend_project/server.py",
       "use": "@vercel/python"
     }
@@ -17,10 +10,6 @@
     {
       "src": "/api/(.*)",
       "dest": "backend_project/server.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "scrape-my-uni/dist/$1"
     }
   ]
 }
