@@ -1,5 +1,6 @@
 # app/config/firebase.py
 import os
+import json
 import logging
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -7,8 +8,6 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-
-SERVICE_ACCOUNT_PATH = os.getenv("FIREBASE_SERVICE_ACCOUNT_PATH")
 
 logger = logging.getLogger(__name__)
 
@@ -38,24 +37,32 @@ def init_firebase():
             logger.error(f"Failed to initialize Firebase mock: {str(e)}")
             raise
     
-    # Normal Firebase initialization with service account
+    # Normal Firebase initialization
     try:
-        cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-        if not cred_path:
-            raise ValueError("GOOGLE_APPLICATION_CREDENTIALS env var is not set")
+        # Try to get credentials from environment variable (production)
+        firebase_creds_json = os.getenv("FIREBASE_CREDENTIALS_JSON")
+        if firebase_creds_json:
+            try:
+                cred_dict = json.loads(firebase_creds_json)
+                cred = credentials.Certificate(cred_dict)
+                logger.info("Using Firebase credentials from environment variable")
+            except json.JSONDecodeError as e:
+                logger.error(f"Invalid JSON in FIREBASE_CREDENTIALS_JSON: {str(e)}")
+                raise
+        else:
+            # Fallback to service account file (local development)
+            cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "./firebase-service-account.json")
+            if not os.path.exists(cred_path):
+                raise FileNotFoundError(f"Service account file not found at: {cred_path}")
+            cred = credentials.Certificate(cred_path)
+            logger.info(f"Using Firebase credentials from file: {cred_path}")
         
-        # Check if file exists
-        if not os.path.exists(cred_path):
-            raise FileNotFoundError(f"Service account file not found at: {cred_path}")
-        
-        logger.info(f"Initializing Firebase with credentials from: {cred_path}")
-        
-        cred = credentials.Certificate(cred_path)
+        # Initialize Firebase app
         firebase_admin.initialize_app(cred)
         
         # Initialize Firestore client
         db = firestore.client()
-        logger.info("Firebase initialized successfully with real credentials")
+        logger.info("Firebase initialized successfully")
         return db
     except Exception as e:
         logger.error(f"Failed to initialize Firebase: {str(e)}")
