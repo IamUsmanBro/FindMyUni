@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "scrape-my-uni/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "backend_project/server.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend_project/server.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "scrape-my-uni/dist/$1"
+    }
+  ],
+  "outputDirectory": "scrape-my-uni/dist",
+  "buildCommand": "cd scrape-my-uni && npm run build",
+  "installCommand": "cd scrape-my-uni && npm install"
+}
