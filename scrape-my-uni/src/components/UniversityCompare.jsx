@@ -35,9 +35,9 @@ import {
   ArrowBack as ArrowBackIcon,
   Visibility as VisibilityIcon
 } from '@mui/icons-material';
-import { universityService } from '../services/api.service';
-import { useToast } from '../context/ToastContext';
-import { useAuth } from '../context/AuthContext';
+import { universityService } from '../services/api.service.js';
+import { useToast } from '../context/ToastContext.jsx';
+import { useAuth } from '../context/AuthContext.jsx';
 import './UniversityCompare.css'; // Import CSS file
 
 const UniversityCompare = () => {

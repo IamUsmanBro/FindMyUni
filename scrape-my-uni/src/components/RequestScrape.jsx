@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.js';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext.jsx';
 
 const RequestScrape = ({ onSuccess }) => {
   const { user } = useAuth();

@@ -35,9 +35,9 @@ import {
   Fullscreen as FullscreenIcon,
   FullscreenExit as FullscreenExitIcon
 } from '@mui/icons-material';
-import { chatbotService } from '../services/chatbot.service';
-import { useAuth } from '../context/AuthContext';
-import { useToast } from '../context/ToastContext';
+import { chatbotService } from '../services/chatbot.service.js';
+import { useAuth } from '../context/AuthContext.jsx';
+import { useToast } from '../context/ToastContext.jsx';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 

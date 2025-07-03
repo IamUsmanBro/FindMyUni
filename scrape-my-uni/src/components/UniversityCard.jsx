@@ -23,7 +23,7 @@ import {
   CheckCircle as CheckCircleIcon,
   ErrorOutline as DeadlinePassedIcon
 } from '@mui/icons-material';
-import { withScrollAnimation } from '../utils/scrollAnimationObserver';
+import { withScrollAnimation } from '../utils/scrollAnimationObserver.js';
 
 const UniversityCard = ({ university, onClick, index = 0 }) => {
   const [isHovered, setIsHovered] = useState(false);

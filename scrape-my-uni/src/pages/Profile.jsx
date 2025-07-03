@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext.jsx';
 import { db } from '../firebase.js';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../context/ToastContext.jsx';
 import { useTheme } from '@mui/material/styles';
 
 const Profile = () => {

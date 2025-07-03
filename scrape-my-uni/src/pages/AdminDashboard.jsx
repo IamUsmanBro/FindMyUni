@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useToast } from '../context/ToastContext';
+import { useAuth } from '../context/AuthContext.jsx';
+import { useToast } from '../context/ToastContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { 
@@ -25,7 +25,7 @@ import {
 import { collection, query, where, getDocs, addDoc, serverTimestamp, doc, updateDoc, deleteDoc, onSnapshot, getDoc, limit } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.js';
-import { adminService, checkApiConnectivity, isUsingFirestoreFallback } from '../services/api.service';
+import { adminService, checkApiConnectivity, isUsingFirestoreFallback } from '../services/api.service.js';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   padding: theme.spacing(4),

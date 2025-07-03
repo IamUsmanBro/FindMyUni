@@ -21,7 +21,7 @@ import {
   Pagination
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { universityService } from '../services/api.service';
+import { universityService } from '../services/api.service.js';
 
 const OpenAdmissions = () => {
   const [universities, setUniversities] = useState([]);

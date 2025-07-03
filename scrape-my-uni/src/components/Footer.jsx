@@ -12,7 +12,7 @@ import {
   ArrowForward as ArrowIcon
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import { withScrollAnimation } from '../utils/scrollAnimationObserver';
+import { withScrollAnimation } from '../utils/scrollAnimationObserver.js';
 
 const Footer = () => {
   const scrollAnimation = withScrollAnimation('bottom');

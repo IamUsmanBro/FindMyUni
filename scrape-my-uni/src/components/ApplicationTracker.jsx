@@ -36,9 +36,9 @@ import {
 } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { format } from 'date-fns';
-import { applicationService } from '../services/api.service';
-import { useAuth } from '../context/AuthContext';
-import { useToast } from '../context/ToastContext';
+import { applicationService } from '../services/api.service.js';
+import { useAuth } from '../context/AuthContext.jsx';
+import { useToast } from '../context/ToastContext.jsx';
 
 // Step definitions for different application statuses
 const APPLICATION_STEPS = {

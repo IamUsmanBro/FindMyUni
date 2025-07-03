@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid, Paper, Typography, CircularProgress, Box, Alert, Snackbar } from '@mui/material';
-import { useAuth } from '../context/AuthContext';
-import ScrapeRequests from '../components/ScrapeRequests';
-import RequestScrape from '../components/RequestScrape';
+import { useAuth } from '../context/AuthContext.jsx';
+import ScrapeRequests from '../components/ScrapeRequests.jsx';
+import RequestScrape from '../components/RequestScrape.jsx';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase.js';
 
