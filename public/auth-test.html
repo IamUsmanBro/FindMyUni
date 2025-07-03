@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Firebase Google Auth Test</title>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        button {
+            padding: 10px 15px;
+            background: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        #status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 4px;
+            background: #f5f5f5;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase Google Auth Test</h1>
+    <p>This page tests Google authentication with Firebase directly, bypassing React.</p>
+    
+    <div id="status">Status: Initializing...</div>
+    
+    <button id="googleLogin">Sign in with Google</button>
+    <button id="logoutBtn" style="display:none">Sign Out</button>
+    
+    <script>
+        // Firebase configuration using direct values (not ideal for production)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDNwuk5a6F3bDBhtiVXmVa3wnkMSU2oFLo",
+            authDomain: "scrapemyuni.firebaseapp.com",
+            projectId: "scrapemyuni",
+            storageBucket: "scrapemyuni.firebasestorage.app", 
+            messagingSenderId: "1010320495217",
+            appId: "1:1010320495217:web:e1a54f2d5ebac186f8c1d0",
+            measurementId: "G-C0J5CQM9Q5"
+        };
+        
+        // Status display function
+        function updateStatus(message, isError = false) {
+            const statusEl = document.getElementById('status');
+            statusEl.innerHTML = message;
+            statusEl.style.background = isError ? '#ffdddd' : '#f5f5f5';
+            console.log(isError ? 'ERROR: ' : 'INFO: ', message);
+        }
+        
+        // Initialize Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+            updateStatus('Firebase initialized successfully. Ready to authenticate.');
+        } catch(error) {
+            updateStatus(`Firebase initialization error: ${error.message}`, true);
+        }
+        
+        // Auth state listener
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                updateStatus(`
+                    Signed in successfully!<br>
+                    User: ${user.displayName}<br>
+                    Email: ${user.email}<br>
+                    User ID: ${user.uid}<br>
+                    Provider: ${user.providerData[0].providerId}<br>
+                `);
+                document.getElementById('googleLogin').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'block';
+            } else {
+                updateStatus('Not signed in.');
+                document.getElementById('googleLogin').style.display = 'block';
+                document.getElementById('logoutBtn').style.display = 'none';
+            }
+        });
+        
+        // Google sign-in
+        document.getElementById('googleLogin').addEventListener('click', () => {
+            updateStatus('Attempting to sign in with Google...');
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+                .then(result => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = result.credential;
+                    const token = credential.accessToken;
+                    const user = result.user;
+                    
+                    updateStatus(`Sign in successful! User: ${user.displayName}`);
+                })
+                .catch(error => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    updateStatus(`Sign in error: ${errorMessage} (${errorCode})`, true);
+                    console.error('Full error:', error);
+                });
+        });
+        
+        // Sign out
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            firebase.auth().signOut().then(() => {
+                updateStatus('Signed out successfully.');
+            }).catch(error => {
+                updateStatus(`Sign out error: ${error.message}`, true);
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Check Test</title>
+    <script>
+        async function testHealth() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Testing...';
+            
+            try {
+                // First try with fetch API
+                const response = await fetch('http://localhost:8000/api/health', {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    // Prevent caching
+                    cache: 'no-cache'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.textContent = `Success with fetch: ${JSON.stringify(data)}`;
+                    resultDiv.style.color = 'green';
+                } else {
+                    resultDiv.textContent = `Error with fetch: ${response.status} ${response.statusText}`;
+                    resultDiv.style.color = 'red';
+                }
+            } catch (error) {
+                resultDiv.textContent = `Fetch failed: ${error.message}`;
+                resultDiv.style.color = 'red';
+                
+                // If fetch fails, try with XMLHttpRequest as fallback
+                try {
+                    resultDiv.textContent += '\n\nTrying with XMLHttpRequest...';
+                    
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'http://localhost:8000/api/health', true);
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            resultDiv.textContent += `\nSuccess with XMLHttpRequest: ${xhr.responseText}`;
+                            resultDiv.style.color = 'green';
+                        } else {
+                            resultDiv.textContent += `\nError with XMLHttpRequest: ${xhr.status} ${xhr.statusText}`;
+                        }
+                    };
+                    
+                    xhr.onerror = function() {
+                        resultDiv.textContent += '\nXMLHttpRequest failed - likely a CORS issue';
+                    };
+                    
+                    xhr.send();
+                } catch (xhrError) {
+                    resultDiv.textContent += `\nXMLHttpRequest error: ${xhrError.message}`;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Backend Health Check Test</h1>
+    <button onclick="testHealth()">Test Connection</button>
+    <pre id="result" style="margin-top: 20px; padding: 10px; background-color: #f5f5f5;"></pre>
+</body>
+</html> 

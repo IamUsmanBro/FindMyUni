@@ -1,0 +1,80 @@
+/* UniversityCompare.css */
+
+.compare-title {
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.comparison-results {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.university-chip {
+  transition: all 0.2s ease;
+}
+
+.university-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.compare-tips-title {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.compare-tips-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .compare-container {
+    padding: 1rem;
+  }
+  
+  .comparison-table {
+    overflow-x: auto;
+  }
+}
+
+/* Custom scrollbar for table content */
+.scrollable-cell {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.scrollable-cell::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-cell::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scrollable-cell::-webkit-scrollbar-thumb {
+  background: #bbdefb;
+  border-radius: 10px;
+}
+
+.scrollable-cell::-webkit-scrollbar-thumb:hover {
+  background: #90caf9;
+} 
