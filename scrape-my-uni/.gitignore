@@ -40,6 +40,11 @@ firebase-debug.*.log
 .env.production
 .env.*.local
 
+# Firebase service account keys
+firebase-service-account.json
+**/firebase_key.json
+**/firebase-service-account.json
+
 # Sensitive files
 **/config/firebase.js
 **/firebase.js
