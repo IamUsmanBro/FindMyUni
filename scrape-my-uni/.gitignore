@@ -47,6 +47,5 @@ firebase-service-account.json
 
 # Sensitive files
 **/config/firebase.js
-**/firebase.js
 **/api.service.js
 **/firebase.service.js
