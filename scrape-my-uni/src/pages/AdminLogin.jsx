@@ -12,7 +12,7 @@ import {
   Paper
 } from '@mui/material';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../firebase.js';
 
 const AdminLogin = () => {
   const { login, currentUser, logout } = useAuth();

@@ -22,7 +22,7 @@ const LoadingFallback = () => (
 const App = lazy(() => import('./App'));
 
 // Ensure Firebase is initialized, but don't block rendering
-import('./firebase');
+import('./firebase.js');
 
 // Load the console helpers in development mode
 if (import.meta.env.DEV) {

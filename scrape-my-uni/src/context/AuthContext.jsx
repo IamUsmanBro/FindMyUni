@@ -11,7 +11,7 @@ import {
   updateEmail,
   updatePassword
 } from 'firebase/auth';
-import { db, auth } from '../firebase';
+import { db, auth } from '../firebase.js';
 import { doc, setDoc, getDoc, query, collection, getDocs, addDoc } from 'firebase/firestore';
 import { where } from 'firebase/firestore';
 

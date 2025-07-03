@@ -9,7 +9,7 @@ import {
   Autocomplete
 } from '@mui/material';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../firebase.js';
 import { useAuth } from '../context/AuthContext';
 
 const RequestScrape = ({ onSuccess }) => {

@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import ScrapeRequests from '../components/ScrapeRequests';
 import RequestScrape from '../components/RequestScrape';
 import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../firebase.js';
 
 const ScrapeManagement = () => {
   const { user } = useAuth();

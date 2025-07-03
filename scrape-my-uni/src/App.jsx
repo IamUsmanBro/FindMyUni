@@ -4,7 +4,7 @@ import { useAuth } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from './firebase';
+import { db } from './firebase.js';
 import PageTransition from './components/UI/PageTransition';
 import LoadingSpinner from './components/UI/LoadingSpinner';
 import NavBar from './components/NavBar';

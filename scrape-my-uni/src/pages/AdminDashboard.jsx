@@ -24,7 +24,7 @@ import {
 } from '@mui/icons-material';
 import { collection, query, where, getDocs, addDoc, serverTimestamp, doc, updateDoc, deleteDoc, onSnapshot, getDoc, limit } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
-import { db } from '../firebase';
+import { db } from '../firebase.js';
 import { adminService, checkApiConnectivity, isUsingFirestoreFallback } from '../services/api.service';
 
 const StyledContainer = styled(Container)(({ theme }) => ({

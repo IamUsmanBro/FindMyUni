@@ -1,5 +1,5 @@
 import { getFirestore, collection } from 'firebase/firestore';
-import { firebaseApp } from '../firebase';
+import { firebaseApp } from '../firebase.js';
 
 // Initialize Firestore - use getFirestore since it's already initialized
 export const db = getFirestore(firebaseApp);
