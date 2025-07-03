@@ -1,8 +1,8 @@
 import { getFirestore, collection } from 'firebase/firestore';
-import { app } from './firebase';
+import { firebaseApp } from '../firebase';
 
-// Initialize Firestore
-export const db = getFirestore(app);
+// Initialize Firestore - use getFirestore since it's already initialized
+export const db = getFirestore(firebaseApp);
 
 // Collection References
 export const collectionsRef = {

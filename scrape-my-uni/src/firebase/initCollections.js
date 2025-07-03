@@ -1,7 +1,7 @@
 import { getFirestore, collection, doc, setDoc } from 'firebase/firestore';
-import { app } from './firebaseConfig';
+import { firebaseApp } from '../firebase';
 
-const db = getFirestore(app);
+const db = getFirestore(firebaseApp);
 
 // Collection initialization functions
 const initializeCollections = async () => {
