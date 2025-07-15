@@ -1,4 +1,4 @@
-# ScrapeMyUni - University Application Tracker
+# FindMyUni - University Application Tracker
 
 A comprehensive platform for tracking university applications in Pakistan with AI-powered assistance.
 
