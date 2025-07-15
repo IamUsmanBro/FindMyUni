@@ -15,7 +15,7 @@ A comprehensive platform for tracking university applications in Pakistan with A
 1. Clone the repository
 ```bash
 git clone <repository-url>
-cd ScrapeMyUni/scrape-my-uni
+cd FindMyUni/scrape-my-uni
 ```
 
 2. Install dependencies
@@ -86,7 +86,7 @@ Required environment variables for frontend:
 ## 📁 Project Structure
 
 ```
-ScrapeMyUni/
+FindMyUni/
 ├── scrape-my-uni/          # Frontend (React + Vite)
 │   ├── src/
 │   ├── public/
